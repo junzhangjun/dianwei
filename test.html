@@ -1,0 +1,50 @@
+# dianwei
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" ></script>
+		<script src="http://www.gongjuji.net/Content/files/jquery.md5.js"></script>
+	</head>
+	
+	<body>
+		<table border="1">
+			<tr>
+				<td>机器编号</td>
+				<td class="num"></td>
+			</tr>
+			<tr>
+				<td>机器地址</td>
+				<td class="adress"></td>
+
+			<tr>
+				<td>坐标经度</td>
+				<td class="x"></td>
+			</tr>
+			<tr>
+				<td>坐标纬度</td>
+				<td class="y"></td>
+			</tr>
+		</table>
+		<div id="msg"></div>
+
+		<script type="text/javascript">
+			console.log($.md5("张三"));
+			test();
+	        function test() {
+	            $.post("http://114.55.54.35:8088/xynet-web-third-pay/api/getMachineGps.do", 
+	            {
+	                key: "5",
+	                timestamp: Date.parse(new Date()),
+	                sign: $.md5("张三"),
+	                pageNumber: "1",
+	                size: "1"
+	            }, function (msg) {
+	                $("#msg").text(msg);
+	            });
+	        }
+	    </script>
+
+	</body>
+</html>
